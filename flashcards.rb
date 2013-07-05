@@ -15,15 +15,6 @@ class Game
   end
 end
 
-class Deck
-  def initialize
-    @deck = []
-  end
-
-  def load
-  end
-end
-
 class Flashcard
   def initialize(options = {})
     @term = options[:term]
