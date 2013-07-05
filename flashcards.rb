@@ -17,16 +17,28 @@ class Game
       puts "Enter your guess:"
       @guess = gets.chomp
       break if @guess == 'skip'
-    if validate_guess
-      puts "Good guess"
-      get_flashcard
-      puts show_definition
+      if validate_guess
+        puts "Good guess"
+        get_flashcard
+        puts show_definition
+      end
+      @current_card.number_of_guesses += 1
+
+      if @guess == "get guess number"
+        get_number_of_guesses
+      end
     end
-    end
+  end
+
+  def get_number_of_guesses
+    puts "Which flashcard term do you want to look up?"
+    user_input = gets.chomp
+    puts @deck.find { |flashcard| flashcard.term == user_input}.number_of_guesses
   end
 
   def get_flashcard
     @current_card = @deck.sample
+    #@current_card = @deck.sort_by {|card| card.number_of_guesses}.pop
   end
 
   def validate_guess

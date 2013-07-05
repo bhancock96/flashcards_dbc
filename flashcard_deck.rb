@@ -16,10 +16,13 @@ class Deck
 end
 
 class Flashcard
+  attr_accessor :number_of_guesses
   attr_reader :term, :definition
+
   def initialize(options = {})
     @term = options[:term]
     @definition = options[:definition]
+    @number_of_guesses = 0 
   end
 end
 
