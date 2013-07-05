@@ -3,7 +3,7 @@ require_relative 'flashcard_deck.rb'
 class Game
   attr_accessor :guess
   def initialize
-    puts "Enter file name, bro."
+    puts "Enter file name, dude."
     file_name = gets.chomp
     @current_card = []
     @guess = ''
