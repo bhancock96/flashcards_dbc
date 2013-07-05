@@ -1,5 +1,3 @@
-require_relative('flashcards')
-
 class Deck
   attr_reader :deck
 
@@ -17,7 +15,12 @@ class Deck
   end
 end
 
+class Flashcard
+  attr_reader :term, :definition
+  def initialize(options = {})
+    @term = options[:term]
+    @definition = options[:definition]
+  end
+end
 
-flashdeck = Deck.new
-flashdeck.load('flashcard_samples.txt')
-p flashdeck.deck
+
