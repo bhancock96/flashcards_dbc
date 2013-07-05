@@ -1,20 +1,23 @@
-require_relative 'flashcards'
+require_relative('flashcards')
 
 class Deck
+  attr_reader :deck
+
   def initialize
     @deck = []
   end
 
   def load(filename)
-    @headers = ["term", "definition"]
+    @headers = [:definition, :term]
     @source_data = (File.new(filename).read.split("\n") - [""]).each_slice(2).to_a
-    @zipped_source_data = @source_data.each do |card_data|
-      @headers.zip(card_data)
+    @source_data.each do |card_data|
+      @deck << Flashcard.new(Hash[@headers.zip(card_data)])
     end
-    @zipped_source_data
+    @deck
   end
 end
 
-deck = Deck.new
-p deck.load('flashcard_samples.txt')
 
+flashdeck = Deck.new
+flashdeck.load('flashcard_samples.txt')
+p flashdeck.deck
